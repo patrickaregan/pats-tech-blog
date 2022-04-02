@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// Define route for GET All Users
+// Define route to GET All Users
 router.get('/', (req, res) => {
     User.findAll({
       attributes: { exclude: ['password'] }
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       });
 });
 
-// Define route for GET One User
+// Define route to GET One User
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// CREATE User
+// Define route to CREATE User
 router.post('/', (req, res) => {
   // expects {username: 'someusername', password: 'somepassword'}
   User.create({
@@ -56,7 +56,49 @@ router.post('/', (req, res) => {
     });
 });
 
-// Login
+// Define route to UPDATE User
+router.put('/:id', (req, res) => {
+  // expects {username: 'someusername', password: 'somepassword'}
+  User.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbData => {
+      if (!dbData[0]) {
+        res.status(404).json({ message: 'No User found with this id.' });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Define route to DELETE User
+router.delete('/:id', (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbData => {
+      if (!dbData) {
+        res.status(404).json({ message: 'No User found with this id.' });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Define route to Login
 router.post('/login', (req, res) => {
   // expects {username: 'someusername', password: 'somepassword'}
   User.findOne({
@@ -86,7 +128,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-// Logout
+// Define route to Logout
 router.post('/logout', (req, res) => {
   //if (req.session.loggedIn) {
     //req.session.destroy(() => {
@@ -96,48 +138,6 @@ router.post('/logout', (req, res) => {
   //else {
     //res.status(404).end();
   //}
-});
-
-// UPDATE User
-router.put('/:id', (req, res) => {
-  // expects {username: 'someusername', password: 'somepassword'}
-  User.update(req.body, {
-    individualHooks: true,
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbData => {
-      if (!dbData[0]) {
-        res.status(404).json({ message: 'No User found with this id.' });
-        return;
-      }
-      res.json(dbData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// DELETE User
-router.delete('/:id', (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbData => {
-      if (!dbData) {
-        res.status(404).json({ message: 'No User found with this id.' });
-        return;
-      }
-      res.json(dbData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
 });
 
 // Export variables
