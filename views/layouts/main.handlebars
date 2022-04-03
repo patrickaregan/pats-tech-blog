@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
   
     <body>
@@ -15,28 +15,19 @@
             <div>
                 <nav>
                     <a href="#">Home</a>
-                    <a href="#">Dashboard</a>
+                    {{#if loggedIn}}
+                    <a href="/dashboard">Dashboard</a>
                     <a href="#">Logout</a>
+                    {{else}}
+                    <a href="/login">Login</a>
+                    {{/if}}
                 </nav>
                 <h1 class="page-title">Pat's Tech Blog</h1>
             </div>
         </header>
 
         <main class="container col-11">
-            
-            
-            <div class="card blog-post">
-                <div class="card-header blog-post-header">
-                    Why MVC is so Important
-                    <span class="blog-post-byline">Posted by username on mm/dd/yyyy</span>
-                </div>
-                <div class="card-body blog-post-text">
-                    <p class="card-text">MVC allows developers to maintain a tru separation of concenrs, devising their code between the Model layer for data, the View layer for design and the Controler layer for application logic.</p>
-                </div>
-            </div>
-        
-            
-    
+            {{{ body }}}
         </main>
 
         <footer class="container text-center py-3">
@@ -48,4 +39,3 @@
     </body>
 
 </html>
-  
