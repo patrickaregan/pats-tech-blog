@@ -1,0 +1,21 @@
+<div class="card blog-post">
+    <div class="card-header blog-post-header">
+        {{post.title}}
+        <span class="blog-post-byline">Posted by {{post.user.username}} on {{format_date post.created_at}}</span>
+    </div>
+    <div class="card-body blog-post-text">
+        <p class="card-text">{{post.content}}</p>
+    </div>
+</div>
+
+{{#each post.comments}}
+<div class="card blog-post">
+    <div class="card-header blog-post-header">
+        Comment
+        <span class="blog-post-byline">Posted by {{user.username}} on {{format_date created_at}}</span>
+    </div>
+    <div class="card-body blog-post-text">
+        <p class="card-text">{{comment_text}}</p>
+    </div>
+</div>
+{{/each}}

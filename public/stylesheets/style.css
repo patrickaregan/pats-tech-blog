@@ -104,6 +104,10 @@ main {
     padding: 10px 0 10px 20px;
 }
 
+.blog-post-header a {
+    color: var(--secondary);
+}
+
 .blog-post-byline {
     display: inline;
     float: right;

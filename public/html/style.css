@@ -79,7 +79,7 @@ main {
     background-color: var(--primary);
     border-color: var(--primary);
     border-width: 3px;
-
+    margin-bottom: 20px;
 }
 
 .blog-post-header {
