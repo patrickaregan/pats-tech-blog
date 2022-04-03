@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Define the login route
+// Define the Login route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -49,6 +49,16 @@ router.get('/login', (req, res) => {
   }
   
   res.render('login');
+});
+
+// Define the Signup route
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  
+  res.render('signup');
 });
 
 // Define the post route

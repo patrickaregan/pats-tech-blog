@@ -14,10 +14,10 @@
         <header>
             <div>
                 <nav>
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                     {{#if loggedIn}}
                     <a href="/dashboard">Dashboard</a>
-                    <a href="#">Logout</a>
+                    <button id="logout-btn" class="logout-btn">Logout</button>
                     {{else}}
                     <a href="/login">Login</a>
                     {{/if}}
@@ -34,7 +34,9 @@
             <h2 class="text-dark">&copy; 2022 Pat's Tech Blog</h2>
         </footer>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+        {{/if}}
 
     </body>
 

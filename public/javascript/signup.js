@@ -1,15 +1,17 @@
 // Define function for handler
-async function loginHandler(event) {
+async function signupHandler(event) {
     // Prevent default behavior
     event.preventDefault();
 
     // Define global variables
     const username = document.querySelector('#login-username').value.trim();
     const password = document.querySelector('#login-password').value.trim();
+    console.log("DEBUG:");
+    console.log("Username: " + username);
 
     // Logic
     if (username && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/users', {
         method: 'post',
         body: JSON.stringify({
             username,
@@ -19,7 +21,7 @@ async function loginHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/login');
         } else {
             alert(response.statusText);
         }
@@ -27,4 +29,4 @@ async function loginHandler(event) {
 }
 
 // Add event listener
-document.querySelector('#login-form').addEventListener('submit', loginHandler);
+document.querySelector('#signup-form').addEventListener('submit', signupHandler);

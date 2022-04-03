@@ -85,7 +85,7 @@ main {
 .blog-post-header {
     background-color: var(--primary);
     border-radius: 0;
-    color: var(--tertiary);
+    color: var(--secondary);
     font-size: 18px;
     font-weight: bold;
     padding: 10px 0 10px 20px;

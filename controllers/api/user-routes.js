@@ -44,6 +44,7 @@ router.get('/:id', (req, res) => {
 // Define route to CREATE a User
 router.post('/', (req, res) => {
   // expects {username: 'someusername', password: 'somepassword'}
+  console.log("===== Creating a User =====");
   User.create({
     username: req.body.username,
     password: req.body.password
@@ -55,48 +56,6 @@ router.post('/', (req, res) => {
         req.session.loggedIn = true;
         res.json(dbData);
       });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Define route to UPDATE User
-router.put('/:id', (req, res) => {
-  // expects {username: 'someusername', password: 'somepassword'}
-  User.update(req.body, {
-    individualHooks: true,
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbData => {
-      if (!dbData[0]) {
-        res.status(404).json({ message: 'No User found with this id.' });
-        return;
-      }
-      res.json(dbData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Define route to DELETE User
-router.delete('/:id', (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbData => {
-      if (!dbData) {
-        res.status(404).json({ message: 'No User found with this id.' });
-        return;
-      }
-      res.json(dbData);
     })
     .catch(err => {
       console.log(err);
@@ -144,6 +103,48 @@ router.post('/logout', (req, res) => {
   else {
     res.status(404).end();
   }
+});
+
+// Define route to UPDATE User
+router.put('/:id', (req, res) => {
+  // expects {username: 'someusername', password: 'somepassword'}
+  User.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbData => {
+      if (!dbData[0]) {
+        res.status(404).json({ message: 'No User found with this id.' });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Define route to DELETE User
+router.delete('/:id', (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbData => {
+      if (!dbData) {
+        res.status(404).json({ message: 'No User found with this id.' });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // Export variables
