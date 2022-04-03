@@ -1,6 +1,6 @@
 // Define global variables
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 // Define route to GET All Users
 router.get('/', (req, res) => {
@@ -18,6 +18,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
+    include: [
+      {
+        model: Post,
+        attributes: [ 'id', 'title', 'content', 'created_at' ]
+      }
+    ],
     where: {
       id: req.params.id
     }
@@ -35,7 +41,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Define route to CREATE User
+// Define route to CREATE a User
 router.post('/', (req, res) => {
   // expects {username: 'someusername', password: 'somepassword'}
   User.create({

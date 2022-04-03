@@ -1,6 +1,6 @@
 // Define global variables
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // Define route to GET All Posts
 router.get('/', (req, res) => {
@@ -13,14 +13,14 @@ router.get('/', (req, res) => {
       ],
       order: [['created_at', 'DESC']],
       include: [
-        //{
-          //model: Comment,
-          //attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          //include: {
-            //model: User,
-            //attributes: ['username']
-          //}
-        //},
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
           attributes: ['username']
@@ -47,14 +47,14 @@ router.get('/:id', (req, res) => {
         'created_at'
       ],
       include: [
-        //{
-          //model: Comment,
-          //attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          //include: {
-            //model: User,
-            //attributes: ['username']
-          //}
-        //},
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
           attributes: ['username']
