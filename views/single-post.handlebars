@@ -8,10 +8,33 @@
     </div>
 </div>
 
+{{#if loggedIn}}
+<form id="comment-form">
+    <div class="card blog-post">
+        <div class="card-header blog-post-header">
+            Add a Comment
+        </div>
+        <div class="card-body blog-post-text">
+            <div class="form-group">
+                <input type="hidden" id="post_id" value="{{post.id}}" />
+                <label for="comment_text">Comment</label>
+                <textarea class="form-control" id="comment_text" rows="3"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-secondary comment-button">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+{{/if}}
+
+{{#if post.comments}}
+<p class="comments-label">Comments:</p>
+{{/if}}
+
 {{#each post.comments}}
 <div class="card blog-post">
     <div class="card-header blog-post-header">
-        Comment
         <span class="blog-post-byline">Posted by {{user.username}} on {{format_date created_at}}</span>
     </div>
     <div class="card-body blog-post-text">
@@ -19,3 +42,7 @@
     </div>
 </div>
 {{/each}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

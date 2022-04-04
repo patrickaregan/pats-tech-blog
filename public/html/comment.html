@@ -35,27 +35,28 @@
                 </div>
             </div>
 
-            <div class="card blog-post">
-                <div class="card-header blog-post-header">
-                    Comment
-                    <span class="blog-post-byline">Posted by username on mm/dd/yyyy</span>
+            <form id="comment-form">
+                <div class="card blog-post">
+                    <div class="card-header blog-post-header">
+                        &nbsp;
+                    </div>
+                    <div class="card-body blog-post-text">
+                        <div class="form-group">
+                            <label for="comment-text">Comment</label>
+                            <textarea class="form-control" id="comment-text" rows="3">text</textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-secondary comment-button">Submit</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body blog-post-text">
-                    <p class="card-text">Comment_Text</p>
-                </div>
-            </div>
-        
+            </form>
             
-    
         </main>
 
         <footer class="container text-center py-3">
             <h2 class="text-dark">&copy; 2022 Pat's Tech Blog</h2>
         </footer>
-
-        {{#if loggedIn}}
-        <script src="/javascript/comment.js"></script>
-        {{/if}}
 
     </body>
 
