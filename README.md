@@ -30,7 +30,7 @@
 ## Usage
 
   - To use the project locally: open a browser to: http://localhost:3001/
-  - To use the project online: open a browser to: https://dashboard.heroku.com/apps/pats-tech-blog
+  - To use the project online: open a browser to: https://pats-tech-blog.herokuapp.com/
 
   ![Pat's Tech Blog](public/images/screenshot.png)
 
