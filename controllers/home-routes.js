@@ -109,4 +109,5 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+// Export variables
 module.exports = router;

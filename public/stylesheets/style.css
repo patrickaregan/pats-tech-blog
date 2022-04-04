@@ -146,6 +146,18 @@ main {
     margin-top: 30px;
 }
 
+.new-post-btn {
+    background-color: var(--primary);
+    color: var(--secondary);
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.new-post-btn:hover {
+    color: var(--secondary);
+}
+
 footer h2 {
     font-size: 16px;
     margin-top: 10px

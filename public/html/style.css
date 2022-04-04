@@ -54,6 +54,19 @@ nav a:hover {
     color: var(--secondary);
 }
 
+.logout-btn {
+    background: none;
+    border: none;
+    color: var(--secondary);
+    cursor: pointer;
+    margin-right: 20px;
+    padding: 0;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}
+
 header h1 {
     background-color: var(--secondary);
     border-radius: 8px;
@@ -121,6 +134,18 @@ main {
 
 .comment-button {
     width: 100%;
+}
+
+.new-post-btn {
+    background-color: var(--primary);
+    color: var(--secondary);
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.new-post-btn:hover {
+    color: var(--secondary);
 }
 
 footer h2 {
