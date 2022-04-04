@@ -162,6 +162,11 @@ main {
     color: var(--secondary);
 }
 
+.delete-post-btn {
+    margin-top: 10px;
+    width: 100%;
+}
+
 footer h2 {
     font-size: 16px;
     margin-top: 10px
