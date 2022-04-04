@@ -136,6 +136,10 @@ main {
     width: 100%;
 }
 
+.submit-button {
+    width: 100%;
+}
+
 .new-post-btn {
     background-color: var(--primary);
     color: var(--secondary);

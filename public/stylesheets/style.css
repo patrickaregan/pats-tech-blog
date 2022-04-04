@@ -140,6 +140,10 @@ main {
     width: 100%;
 }
 
+.submit-button {
+    width: 100%;
+}
+
 .comments-label {
     font-weight: bold;
     margin-left: 2px;

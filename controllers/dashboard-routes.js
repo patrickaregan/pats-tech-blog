@@ -41,5 +41,10 @@ router.get('/', (req, res) => {
       });
 });
 
+// Define new post route
+router.get('/newpost', (req, res) => {
+  res.render('new-post', { loggedIn: true, dashboard: true });
+});
+
 // Export variables
 module.exports = router;
